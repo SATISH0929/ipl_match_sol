@@ -50,6 +50,11 @@ class TeamMatches extends Component {
     this.setState({teamMatchesData: formattedData, isLoading: false})
   }
 
+  handleBack = () => {
+    const {history} = this.props
+    history.push('/')
+  }
+
   renderRecentMatchesList = () => {
     const {teamMatchesData} = this.state
     const {recentMatches} = teamMatchesData
@@ -70,6 +75,9 @@ class TeamMatches extends Component {
     return (
       <div className="responsive-container">
         <img src={teamBannerURL} alt="team banner" className="team-banner" />
+        <button type="button" onClick={this.handleBack}>
+          Back
+        </button>
         <LatestMatch latestMatchData={latestMatch} />
         {this.renderRecentMatchesList()}
       </div>
